@@ -24,7 +24,6 @@ const useSignup = () => {
     if (!success) return;
     setLoading(true);
     try {
-      console.log(1);
       const res = await fetch("http://localhost:8000/api/auth/signup", {
         method: "POST",
         credentials: "include",
@@ -37,7 +36,6 @@ const useSignup = () => {
           gender,
         }),
       });
-      console.log(1);
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       localStorage.setItem("chat-user", JSON.stringify(data));
@@ -69,7 +67,7 @@ const handleErrors = ({
   }
 
   if (password.length < 6) {
-    toast.error("Password must contain atleast 6 charecters");
+    toast.error("Password must contain atleast 6 characters");
     return false;
   }
   return true;
