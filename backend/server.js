@@ -1,7 +1,6 @@
 import path from "path";
 import express from "express";
 import dotenv from "dotenv";
-import cors from "cors";
 dotenv.config();
 
 import authRoutes from "./routes/authRoutes.js";
@@ -17,12 +16,7 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
-app.use(
-  cors({
-    origin: process.env.VITE_API_BASE_URL,
-    credentials: true,
-  })
-);
+
 const PORT = process.env.PORT || 8000;
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
