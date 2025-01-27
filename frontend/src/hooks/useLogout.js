@@ -10,10 +10,13 @@ const useLogout = () => {
   const logout = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/auth/logout", {
-        method: "POST",
-        credentials: "include",
-      });
+      const res = await fetch(
+        process.env.VITE_API_BASE_URL + "/api/auth/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
       const data = await res.json();
       localStorage.removeItem("chat-user");
       setAuthUser(null);
