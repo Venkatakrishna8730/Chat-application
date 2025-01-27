@@ -24,21 +24,18 @@ const useSignup = () => {
     if (!success) return;
     setLoading(true);
     try {
-      const res = await fetch(
-        process.env.VITE_API_BASE_URL + "/api/auth/signup",
-        {
-          method: "POST",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fullName,
-            username,
-            password,
-            confirmPassword,
-            gender,
-          }),
-        }
-      );
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName,
+          username,
+          password,
+          confirmPassword,
+          gender,
+        }),
+      });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       localStorage.setItem("chat-user", JSON.stringify(data));

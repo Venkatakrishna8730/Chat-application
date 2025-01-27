@@ -10,7 +10,7 @@ export default function useGetConversation() {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const res = await fetch(process.env.VITE_API_BASE_URL + "/api/users", {
+        const res = await fetch("/api/users", {
           method: "GET",
           credentials: "include",
         });
