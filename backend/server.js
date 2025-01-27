@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: "https://chat-application-o3kx.onrender.com/",
+    origin: process.env.VITE_API_BASE_URL,
     credentials: true,
   })
 );
@@ -36,5 +36,4 @@ app.get("*", (req, res) => {
 
 server.listen(PORT, () => {
   connectDB();
-  console.log(`listening in the port ${PORT}`);
 });

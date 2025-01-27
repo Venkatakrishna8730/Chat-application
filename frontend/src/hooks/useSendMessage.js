@@ -11,7 +11,7 @@ const useSendMessage = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:8000/api/messages/send/${selectedConversation._id}`,
+        `${process.env.VITE_API_BASE_URL}/api/messages/send/${selectedConversation._id}`,
         {
           method: "POST",
           credentials: "include",

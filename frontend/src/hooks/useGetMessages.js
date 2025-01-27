@@ -12,7 +12,7 @@ const useGetMessages = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:8000/api/messages/${selectedConversation._id}`,
+          `${process.env.VITE_API_BASE_URL}/api/messages/${selectedConversation._id}`,
           {
             method: "GET",
             credentials: "include",
