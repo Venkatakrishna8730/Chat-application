@@ -8,7 +8,7 @@ const signup = async (req, res) => {
     const { fullName, username, password, confirmPassword, gender } = req.body;
 
     if (password !== confirmPassword) {
-      res.status(400).json({ error: "passwords doesn't match" });
+      return res.status(400).json({ error: "passwords doesn't match" });
     }
 
     const findUser = await user.findOne({ username });
@@ -48,6 +48,8 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
     const findUser = await user.findOne({ username });
+
+    console.log(findUser);
 
     const isPasswordTrue = await bcrypt.compare(
       password,
